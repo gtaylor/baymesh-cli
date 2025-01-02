@@ -1,10 +1,11 @@
 default: lint test
 
 install:
-	uv sync
+	uv sync --all-extras --dev
 
-lint:
+lint: fmt
 	uv run ruff check
+	uv run pyright
 
 fmt:
 	uv run ruff format

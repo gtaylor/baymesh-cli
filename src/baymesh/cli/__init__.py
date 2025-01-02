@@ -1,1 +1,1 @@
-from baymesh.cli.__main__ import main  # noqa: F401
+from baymesh.cli.__main__ import cli  # noqa: F401
