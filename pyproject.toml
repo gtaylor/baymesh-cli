@@ -1,0 +1,41 @@
+[project]
+name = "baymesh"
+version = "0.1.0"
+description = "Baymesh command line and library for members of Bayme.sh"
+readme = "README.md"
+requires-python = ">=3.11"
+maintainers = [
+    {name = "Greg Taylor"},
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "click>=8.1.8",
+    "meshtastic>=2.5.9",
+]
+
+[project.scripts]
+baymesh = "baymesh.cli:main"
+
+[project.urls]
+Repository = "https://github.com/gtaylor/baymesh-cli"
+
+[tool.uv]
+package = true
+
+[tool.ruff]
+line-length = 90
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "ruff>=0.8.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
