@@ -1,6 +1,6 @@
 [project]
 name = "baymesh"
-version = "0.1.0"
+version = "0.3.2"
 description = "Baymesh command line and library for members of Bayme.sh"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -63,6 +63,7 @@ allow_zero_version = true
 no_git_verify = false
 tag_format = "v{version}"
 version_variables = ["src/baymesh/__init__.py:__version__"]
+version_toml = ["pyproject.toml:project.version"]
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"
