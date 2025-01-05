@@ -30,6 +30,14 @@ jobs:
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
 
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build the project
+        run: make build
+
       - name: Action | Semantic Version Release
         id: release
         # Adjust tag with desired version if applicable.

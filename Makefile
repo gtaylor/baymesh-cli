@@ -12,3 +12,6 @@ fmt:
 
 test:
 	uv run pytest tests
+
+dist:
+	uv build
