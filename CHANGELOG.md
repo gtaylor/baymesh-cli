@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.2 (2025-01-05)
+
+### Bug Fixes
+
+- Fix release for real this time
+  ([`eab6a5b`](https://github.com/gtaylor/baymesh-cli/commit/eab6a5b9d9de74bc0afec7bc84116f6101881ef9))
+
+
 ## v0.3.1 (2025-01-05)
 
 ### Bug Fixes
