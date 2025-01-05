@@ -1,6 +1,6 @@
 default: lint test
 
-install:
+setup-dev:
 	uv sync --all-extras --dev
 
 lint: fmt

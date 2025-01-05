@@ -29,6 +29,18 @@ baymesh validate
 
 Your node will be checked against the [Bay Mesh Recommended Settings](https://bayme.sh/docs/getting-started/recommended-settings/).
 
+## Contributing
+
+To get your environment set up, you'll need the `uv` package manager. See [Installing uv](https://docs.astral.sh/uv/getting-started/installation/). Once `uv` is installed, do the following:
+
+```shell
+git clone git@github.com:gtaylor/baymesh-cli.git
+cd baymesh-cli
+make setup-dev
+# Do your dev work here and run linters and tests afterwards:
+make
+```
+
 ## License
 
 The contents of this repository are licensed under the GPLv3. A copy of the license may be found in the [LICENSE](./LICENSE) file in the repo root.
