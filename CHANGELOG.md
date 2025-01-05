@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-01-05)
+
+### Features
+
+- Attempt release automation fix
+  ([`bb18bf7`](https://github.com/gtaylor/baymesh-cli/commit/bb18bf73cdadee6f3f83273460b772d950a6f2a5))
+
+
 ## v0.1.0 (2025-01-05)
 
 ### Documentation
