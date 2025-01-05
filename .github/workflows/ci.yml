@@ -68,9 +68,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Build the project
-        run: make dist
-
       - name: Action | Semantic Version Release
         id: release
         # Adjust tag with desired version if applicable.
@@ -79,6 +76,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_name: "github-actions"
           git_committer_email: "actions@users.noreply.github.com"
+
+      - name: Build the project
+        run: make dist
 
       - name: Publish | Upload package to PyPI
         uses: pypa/gh-action-pypi-publish@v1.12.3
