@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.1 (2025-01-05)
+
+### Bug Fixes
+
+- Remove now-unused release.yml
+  ([`7ed0adc`](https://github.com/gtaylor/baymesh-cli/commit/7ed0adca911258a5693af43e57eab24f73395276))
+
+
 ## v0.3.0 (2025-01-05)
 
 ### Features
