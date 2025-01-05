@@ -36,7 +36,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Build the project
-        run: make build
+        run: make dist
 
       - name: Action | Semantic Version Release
         id: release
