@@ -77,6 +77,10 @@ jobs:
           git_committer_name: "github-actions"
           git_committer_email: "actions@users.noreply.github.com"
 
+      # Ensures that uv.lock is up to date with the new version number
+      - name: Run uv sync
+        run: uv sync
+
       - name: Build the project
         run: make dist
 
@@ -90,10 +94,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.release.outputs.tag }}
-
-#  trigger-release:
-#    if: github.ref_name == 'main'
-#    permissions:
-#      id-token: write
-#      contents: write
-#    uses: ./.github/workflows/release.yml

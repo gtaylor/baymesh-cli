@@ -1,0 +1,20 @@
+name: Bump Formula versions and dependencies
+on:
+  # trigger when release got created (preferred)
+  release:
+    types: [released]
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Homebrew formula
+        uses: dawidd6/action-homebrew-bump-formula@v4
+        with:
+          # Required, custom GitHub access token with the 'public_repo' and 'workflow' scopes
+          token: ${{secrets.HOMEBREW_TOKEN}}
+          no_fork: true
+          tap: gtaylor/baymesh
+          formula: baymesh
+          # Don't check for open PRs.
+          force: true
