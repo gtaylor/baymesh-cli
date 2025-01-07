@@ -13,7 +13,13 @@ This project is in an experimental state. No support is offered yet!
 
 ## Installing
 
-To install the `baymesh` CLI, install via PyPi:
+To install the `baymesh` CLI, install via Homebrew:
+
+```shell
+brew install gtaylor/baymesh
+```
+
+Or PyPi:
 
 ```shell
 pypi install baymesh
