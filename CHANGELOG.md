@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.1 (2025-01-07)
+
+### Bug Fixes
+
+- Pull Homebrew bump into ci.yml
+  ([`a1d6bb8`](https://github.com/gtaylor/baymesh-cli/commit/a1d6bb8681e05829d751249b93dd000b0f29ac31))
+
+
 ## v0.5.0 (2025-01-07)
 
 ### Features
