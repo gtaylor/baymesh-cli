@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-01-07)
+
+### Features
+
+- Unveil the new Homebrew tap
+  ([`4032861`](https://github.com/gtaylor/baymesh-cli/commit/4032861a3691102c04261c88572db1ace8a64aa0))
+
+
 ## v0.4.0 (2025-01-07)
 
 ### Documentation
