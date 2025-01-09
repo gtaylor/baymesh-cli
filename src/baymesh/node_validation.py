@@ -7,12 +7,16 @@ See:
 
 import enum
 import dataclasses
+import typing
 from typing import Any
 
-import meshtastic.serial_interface
+
 from meshtastic.protobuf import config_pb2, channel_pb2
 
 from baymesh import firmware_versions
+
+if typing.TYPE_CHECKING:
+    import meshtastic.serial_interface
 
 
 class RecommendationSeverity(enum.Enum):
@@ -70,9 +74,8 @@ class Report(object):
         return len(errors) == 0
 
 
-def validate_node(device_path: str) -> Report:
+def validate_node(interface: "meshtastic.serial_interface.SerialInterface") -> Report:
     """Given a serial path, validate the attached device for compliance."""
-    interface = meshtastic.serial_interface.SerialInterface(device_path)
     node_info: dict[str, Any] | None = interface.getMyNodeInfo()
     if not node_info:
         raise RuntimeError("Failed to get node info. Please try again.")
@@ -128,8 +131,8 @@ def _check_user_long_name(long_name: str) -> Recommendation | None:
     split_name = long_name.split()
     if len(split_name) == 2 and split_name[0] == "Meshtastic" and len(split_name[1]) == 4:
         return Recommendation(
-            message=f"Node long name {long_name} may still be set to the default. "
-            f"Consider changing it to something unique.",
+            message=f"Your node's long name '{long_name}' is close to the default. "
+            f"Consider setting a more descriptive long name.",
             severity=RecommendationSeverity.WARNING,
         )
 
