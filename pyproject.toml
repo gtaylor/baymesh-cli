@@ -1,6 +1,6 @@
 [project]
 name = "baymesh"
-version = "0.5.1"
+version = "0.6.0"
 description = "Baymesh command line and library for members of Bayme.sh"
 readme = "README.md"
 requires-python = ">=3.11"

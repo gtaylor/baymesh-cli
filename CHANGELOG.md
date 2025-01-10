@@ -1,6 +1,43 @@
 # CHANGELOG
 
 
+## v0.6.0 (2025-01-10)
+
+### Bug Fixes
+
+- Version comparison
+  ([`3ac7596`](https://github.com/gtaylor/baymesh-cli/commit/3ac759662e4df0c2d4619cc09498706d2d188ada))
+
+### Chores
+
+- Bump dependencies
+  ([`53be031`](https://github.com/gtaylor/baymesh-cli/commit/53be031a85cb04ca5e1781682786eca6d903607e))
+
+- Commit the updated uv.lock version
+  ([`b7cb817`](https://github.com/gtaylor/baymesh-cli/commit/b7cb817de09cb1e7262bc4cfd4c19f4109c3d28e))
+
+- Remove Homebrew release stuff from CI
+  ([`4f81bb5`](https://github.com/gtaylor/baymesh-cli/commit/4f81bb57c52d1192bde05cc9970cea9bd0747df3))
+
+### Features
+
+- Add node setup wizard
+  ([`c5d8e39`](https://github.com/gtaylor/baymesh-cli/commit/c5d8e39633c8241349b2fa33fc8d19e3fff6a412))
+
+The wizard will walk the user through configuring the essential settings for the node. For ex: LoRa
+  preset, long/short names, etc.
+
+- Add version checking
+  ([`31bc074`](https://github.com/gtaylor/baymesh-cli/commit/31bc0740c299840c94f3242e9253ca758ae18e5d))
+
+Since the recommended configs may change over time, it's important that users stay up to date. This
+  commit adds a facility for checking for updates and notifying the user if a newer version is
+  available.
+
+For now we're checking on every command invocation, but we can cache this in the future if it
+  becomes problematic.
+
+
 ## v0.5.1 (2025-01-07)
 
 ### Bug Fixes
