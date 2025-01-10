@@ -27,13 +27,25 @@ pypi install baymesh
 
 ## Usage
 
-Connect your node via USB and run:
+### Setting your node up to work with the Bay Mesh
+
+To run your node through a guided setup flow, connect it via USB and run:
+
+```shell
+baymesh setup
+```
+
+This will leave you with a set of reasonable defaults applied to your node.
+
+### Validating your node's configs
+
+If you'd like to make sure that your node is compliant with the [Bay Mesh Recommended Settings](https://bayme.sh/docs/getting-started/recommended-settings/), connect it via USB and run:
 
 ```shell
 baymesh validate
 ```
 
-Your node will be checked against the [Bay Mesh Recommended Settings](https://bayme.sh/docs/getting-started/recommended-settings/).
+The CLI will recommend settings changes if it finds anything out of spec.
 
 ## Contributing
 
