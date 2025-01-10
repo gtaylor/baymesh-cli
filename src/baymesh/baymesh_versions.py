@@ -38,5 +38,5 @@ def is_up_to_date() -> tuple[bool, str]:
     """
     latest_version = get_latest_version()
     installed_version = get_current_version()
-    up_to_date = latest_version < installed_version
+    up_to_date = latest_version == installed_version
     return up_to_date, latest_version
