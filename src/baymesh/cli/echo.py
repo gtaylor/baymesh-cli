@@ -30,7 +30,7 @@ def success(message):
 
 def warning(message):
     """Non-blocking warning."""
-    click.secho(f"⚠️ {message}", fg=WARNING_COLOR)
+    click.secho(f"⚠️  {message}", fg=WARNING_COLOR)
 
 
 def info(message):

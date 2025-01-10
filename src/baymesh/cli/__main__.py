@@ -1,14 +1,17 @@
 """Primary CLI entrypoint."""
 
 import typing
+import logging
 
 import click
 
-from baymesh import node_validation
+from baymesh import node_validation, baymesh_versions
 from baymesh.cli import devices, node_setup, echo
 
 if typing.TYPE_CHECKING:
     pass
+
+logger = logging.getLogger(__name__)
 
 
 @click.group(no_args_is_help=True)
@@ -16,6 +19,16 @@ if typing.TYPE_CHECKING:
 def cli(ctx: click.Context):
     """Node setup, validation, and management CLI for the Meshtastic Bay Area Group."""
     ctx.ensure_object(dict)
+    try:
+        is_up_to_date, latest_version = baymesh_versions.is_up_to_date()
+    except RuntimeError as exc:
+        logger.warning(f"Unable to determine latest version of baymesh: {exc}")
+        return
+    if not is_up_to_date:
+        echo.warning(
+            f"A new version ({latest_version}) of the baymesh CLI is available. "
+            f"Please upgrade in order to ensure continued interop with the mesh."
+        )
 
 
 @cli.command()
