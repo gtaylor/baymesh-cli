@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
 ERROR_COLOR = "red"
 SUCCESS_COLOR = "green"
 WARNING_COLOR = "yellow"
-INFO_COLOR = "cyan"
+PROMPT_COLOR = "cyan"
 
 
 def error(message):
@@ -35,7 +35,7 @@ def warning(message):
 
 def info(message):
     """Share context or progress."""
-    click.secho(f"️ℹ️  {message}", fg=INFO_COLOR)
+    click.secho(f"️ℹ️  {message}")
 
 
 def working(message):
@@ -57,14 +57,14 @@ def _buffer_additional_info(additional_info: str | list[str]) -> str:
 
 def confirm(message: str, additional_info: str | list[str] = "", **kwargs) -> bool:
     """Prompts the user for a confirmation."""
-    msg_contents = click.style(f"🤔 {message}", fg=INFO_COLOR)
+    msg_contents = click.style(f"🤔 {message}", fg=PROMPT_COLOR)
     msg_contents += _buffer_additional_info(additional_info)
     return click.confirm(msg_contents, **kwargs)
 
 
 def prompt(message: str, additional_info: str | list[str] = "", **kwargs) -> "Any":
     """Prompts the user."""
-    msg_contents = click.style(f"🤔 {message}", fg=INFO_COLOR)
+    msg_contents = click.style(f"🤔 {message}", fg=PROMPT_COLOR)
     msg_contents += _buffer_additional_info(additional_info)
     return click.prompt(msg_contents, **kwargs)
 
