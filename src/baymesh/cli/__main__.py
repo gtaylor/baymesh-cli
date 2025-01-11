@@ -37,9 +37,7 @@ def validate():
     port = devices.select_device_flow()
     interface = devices.ensure_meshtastic_interface(device_path=port.device, port=port)
     report = node_validation.validate_node(interface=interface)
-    echo.info(
-        f"Found Meshtastic node: { report.device_long_name } ({report.device_short_name})"
-    )
+    devices.announce_connected_device(interface)
     echo.working("Validating node configs...\n")
     node_validation.render_validation_report(report)
 
@@ -49,6 +47,7 @@ def setup():
     """Sets up a node using the standard Baymesh configs."""
     port = devices.select_device_flow()
     interface = devices.ensure_meshtastic_interface(device_path=port.device, port=port)
+    devices.announce_connected_device(interface)
     echo.confirm(
         "If you have already configured your node, the setup wizard may "
         "overwrite some of your settings. Continue?"

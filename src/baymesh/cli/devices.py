@@ -13,6 +13,7 @@ import serial.tools.list_ports
 from baymesh.cli import echo
 
 if typing.TYPE_CHECKING:
+    from typing import Any
     from serial.tools.list_ports_common import ListPortInfo
 
     IFNPair = typing.Tuple[meshtastic.serial_interface.SerialInterface, "meshtastic.Node"]
@@ -96,3 +97,13 @@ def block_until_device_returns_node(
     """Same as block_until_device_returns but also returns a meshtastic.Node."""
     our_node = block_until_device_returns(interface)
     return interface, our_node.getNode("^local")
+
+
+def announce_connected_device(interface: "meshtastic.serial_interface.SerialInterface"):
+    """Echo announcement for the connected node."""
+    node_info: dict[str, "Any"] | None = interface.getMyNodeInfo()
+    if not node_info:
+        raise RuntimeError("Unable to retrieve node info.")
+    long_name = node_info["user"]["longName"]
+    short_name = node_info["user"]["shortName"]
+    echo.info(f"Found Meshtastic node: {long_name} ({short_name})")
