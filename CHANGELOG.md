@@ -1,6 +1,41 @@
 # CHANGELOG
 
 
+## v0.7.0 (2025-01-11)
+
+### Bug Fixes
+
+- Correct info emit colors
+  ([`5f940e3`](https://github.com/gtaylor/baymesh-cli/commit/5f940e3ff7626557d7795aa836775f178c377185))
+
+Was previously cyan but was supposed to be color-less.
+
+### Chores
+
+- Upgrade dependencies
+  ([`efdb242`](https://github.com/gtaylor/baymesh-cli/commit/efdb242fadcf768a9ce5f56b826bb62cbb89d565))
+
+### Code Style
+
+- Remove some padding in node_validation
+  ([`34ecf8e`](https://github.com/gtaylor/baymesh-cli/commit/34ecf8eecc0c6c078194129e93b8b015f9235009))
+
+### Documentation
+
+- Fix brew install path in README
+  ([`9dc42cf`](https://github.com/gtaylor/baymesh-cli/commit/9dc42cf3f5e6c45c7f6dad5516c36b10dd664f19))
+
+- Update README.md usage instructions
+  ([`8c225f4`](https://github.com/gtaylor/baymesh-cli/commit/8c225f4ed9609f0f0c26a8166ddbed6b11e7a9d0))
+
+### Features
+
+- Show long/short name when starting setup
+  ([`59db496`](https://github.com/gtaylor/baymesh-cli/commit/59db496d170e5ee333a5a3163d9deec6eea40fd2))
+
+This will make it more clear which node you are interacting with.
+
+
 ## v0.6.0 (2025-01-10)
 
 ### Bug Fixes
