@@ -16,9 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "click>=8.1.8",
-    "meshtastic>=2.5.9",
-    "pydantic-settings>=2.7.1",
-    "pydantic>=2.10.4",
+    "meshtastic>=2.5.10",
     "pyyaml>=6.0.2",
     "pyserial>=3.5",
     "requests>=2.32.3",
@@ -41,7 +39,7 @@ dev = [
     "pyright[nodejs]>=1.1.391",
     "pytest>=8.3.4",
     "python-semantic-release>=9.15.2",
-    "ruff>=0.8.4",
+    "ruff>=0.9.1",
 ]
 
 [build-system]
