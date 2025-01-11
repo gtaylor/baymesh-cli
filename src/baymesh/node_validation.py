@@ -239,10 +239,10 @@ def render_validation_report(report: "Report"):
 
     for recommendation in report.recommendations:
         echo_func = echo._recommendation_severity_to_echo(recommendation.severity)
-        echo_func(f"{ recommendation.severity.name }: { recommendation.message }")
+        echo_func(f"{recommendation.severity.name}: {recommendation.message}")
 
     if report.validation_successful():
-        echo.success(f"{ success_msg } Please consider the above warning(s).")
+        echo.success(f"{success_msg} Please consider the above warning(s).")
     else:
         echo.error(
             "Your node is not complaint with Meshtastic Bay Area Group standards "
