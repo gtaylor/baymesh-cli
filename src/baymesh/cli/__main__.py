@@ -49,7 +49,7 @@ def setup():
     interface = devices.ensure_meshtastic_interface(device_path=port.device, port=port)
     devices.announce_connected_device(interface)
     echo.confirm(
-        "If you have already configured your node, the setup wizard may "
+        "If you have already configured your node, the setup wizard will "
         "overwrite some of your settings. Continue?"
     )
     echo.working("Starting setup wizard...\n")

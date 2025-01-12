@@ -72,33 +72,6 @@ def ensure_meshtastic_interface(
         raise
 
 
-def block_until_device_returns(
-    interface: "meshtastic.serial_interface.SerialInterface",
-) -> "meshtastic.serial_interface.SerialInterface":
-    """Block until the specified devices becomes responsive.
-
-    Most useful for applying configs and waiting for the device to come back up.
-    """
-    while True:
-        try:
-            # Just trying to trigger an exception if the device isn't ready.
-            interface = meshtastic.serial_interface.SerialInterface(interface.devPath)
-            # Give it another couple of seconds to settle up, since we were seeing
-            # warnings with some devices.
-            time.sleep(2)
-            return interface
-        except serial.SerialException:
-            time.sleep(1)
-
-
-def block_until_device_returns_node(
-    interface: "meshtastic.serial_interface.SerialInterface",
-) -> "IFNPair":
-    """Same as block_until_device_returns but also returns a meshtastic.Node."""
-    our_node = block_until_device_returns(interface)
-    return interface, our_node.getNode("^local")
-
-
 def announce_connected_device(interface: "meshtastic.serial_interface.SerialInterface"):
     """Echo announcement for the connected node."""
     node_info: dict[str, "Any"] | None = interface.getMyNodeInfo()
@@ -107,3 +80,15 @@ def announce_connected_device(interface: "meshtastic.serial_interface.SerialInte
     long_name = node_info["user"]["longName"]
     short_name = node_info["user"]["shortName"]
     echo.info(f"Found Meshtastic node: {long_name} ({short_name})")
+
+
+def wait_for_settings_to_apply(wait_duration: int = 10):
+    """Waits for a writeConfig + reboot cycle before proceeding.
+
+    We haven't been able to figure out how to detect the end of the reboot reliably yet.
+    The wait duration should be long enough cover even the slowest devices.
+    """
+    message = "⚙️  Waiting for settings to apply"
+    with click.progressbar(range(wait_duration), label=message) as bar:
+        for _ in bar:
+            time.sleep(1)

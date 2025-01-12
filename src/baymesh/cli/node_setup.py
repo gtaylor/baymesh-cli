@@ -148,18 +148,13 @@ def apply_configs(
     """Applies the configs based on the users responses to the setup wizard."""
     our_node: meshtastic.Node = interface.getNode("^local")
 
-    # Meshtastic spews some warnings that we don't care about during this process.
-    original_level = echo.get_logging_level()
-    echo.set_logging_level(logging.ERROR)
-
     click.secho("⚙️  Applying long and short name...")
     # This doesn't seem to reboot the node...
     our_node.setOwner(
         long_name=configs.device_long_name, short_name=configs.device_short_name
     )
 
-    # ... but we'll give it a second to settle, anyway.
-    time.sleep(2)
+    devices.wait_for_settings_to_apply()
 
     click.secho("⚙️  Applying LoRa configs...")
     our_node.localConfig.lora.use_preset = True
@@ -168,13 +163,8 @@ def apply_configs(
     our_node.localConfig.lora.config_ok_to_mqtt = True
     our_node.writeConfig("lora")
 
-    time.sleep(4)
-    interface, our_node = devices.block_until_device_returns_node(interface)
+    devices.wait_for_settings_to_apply()
 
     click.secho("⚙️  Applying role configs...")
     our_node.localConfig.device.role = configs.device_role
     our_node.writeConfig("device")
-
-    time.sleep(4)
-    # Restore logging level.
-    echo.set_logging_level(original_level)
