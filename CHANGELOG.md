@@ -1,6 +1,28 @@
 # CHANGELOG
 
 
+## v0.7.1 (2025-01-12)
+
+### Bug Fixes
+
+- Fall back to sleeping through reboots
+  ([`0bb5b55`](https://github.com/gtaylor/baymesh-cli/commit/0bb5b559bccca0c1e3b6f79990584b27c59b6bd8))
+
+I had originally tried to find a way to wait for nodes to reboot when applying settings to keep
+  things fast and dynamic, but I couldn't find a safe way to detect when the node was back up 100%
+  of the time on all of the devices I had.
+
+Fall back to a plain old sleep and let's hope that most devices reboot within 10 seconds.
+
+- Remove unused imports
+  ([`966e337`](https://github.com/gtaylor/baymesh-cli/commit/966e3373b60d567cdb99fa76f19673b92d186221))
+
+### Chores
+
+- Bump version in uv.lock
+  ([`f71b607`](https://github.com/gtaylor/baymesh-cli/commit/f71b607070010c4a031dafb58159a4e693c8e553))
+
+
 ## v0.7.0 (2025-01-11)
 
 ### Bug Fixes
