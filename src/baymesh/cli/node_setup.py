@@ -1,5 +1,6 @@
 """Node setup wizard logic."""
 
+import logging
 import sys
 import typing
 import dataclasses
@@ -145,6 +146,8 @@ def apply_configs(
 ):
     """Applies the configs based on the users responses to the setup wizard."""
     our_node: meshtastic.Node = interface.getNode("^local")
+    original_level = echo.get_logging_level()
+    echo.set_logging_level(logging.ERROR)
 
     click.secho("⚙️  Applying long and short name...")
     # This doesn't seem to reboot the node...
@@ -166,3 +169,4 @@ def apply_configs(
     click.secho("⚙️  Applying role configs...")
     our_node.localConfig.device.role = configs.device_role
     our_node.writeConfig("device")
+    echo.set_logging_level(original_level)
