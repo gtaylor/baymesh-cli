@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.7.2 (2025-01-12)
+
+### Bug Fixes
+
+- Extend reboot wait time to 15 seconds
+  ([`2775c39`](https://github.com/gtaylor/baymesh-cli/commit/2775c3994a23133b356f6b60e9f83beae087c2d0))
+
+Turns out that the G2 is even slower than the T-Beam.
+
+- Silence serial logger during setup
+  ([`bda9580`](https://github.com/gtaylor/baymesh-cli/commit/bda9580dbcfd2d123b0fae40cefd07c36bbdae1c))
+
+- Typo
+  ([`2837db5`](https://github.com/gtaylor/baymesh-cli/commit/2837db5b84919b1669376d8c431ebe2e3e118796))
+
+### Chores
+
+- Bump version in uv.lock
+  ([`09e4e80`](https://github.com/gtaylor/baymesh-cli/commit/09e4e8064be0b3dc6ee18f96fb3b699c10f7f572))
+
+
 ## v0.7.1 (2025-01-12)
 
 ### Bug Fixes
