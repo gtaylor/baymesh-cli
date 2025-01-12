@@ -1,8 +1,6 @@
 """Node setup wizard logic."""
 
-import logging
 import sys
-import time
 import typing
 import dataclasses
 
