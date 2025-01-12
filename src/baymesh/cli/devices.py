@@ -82,7 +82,7 @@ def announce_connected_device(interface: "meshtastic.serial_interface.SerialInte
     echo.info(f"Found Meshtastic node: {long_name} ({short_name})")
 
 
-def wait_for_settings_to_apply(wait_duration: int = 10):
+def wait_for_settings_to_apply(wait_duration: int = 15):
     """Waits for a writeConfig + reboot cycle before proceeding.
 
     We haven't been able to figure out how to detect the end of the reboot reliably yet.
