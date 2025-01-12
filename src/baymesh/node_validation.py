@@ -245,6 +245,6 @@ def render_validation_report(report: "Report"):
         echo.success(f"{success_msg} Please consider the above warning(s).")
     else:
         echo.error(
-            "Your node is not complaint with Meshtastic Bay Area Group standards "
+            "Your node is not compliant with Meshtastic Bay Area Group standards "
             "due to the above error(s)."
         )
