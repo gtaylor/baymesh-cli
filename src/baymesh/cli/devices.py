@@ -82,7 +82,9 @@ def announce_connected_device(interface: "meshtastic.serial_interface.SerialInte
     echo.info(f"Found Meshtastic node: {long_name} ({short_name})")
 
 
-def wait_for_settings_to_apply(wait_duration: int = 15):
+def wait_for_settings_to_apply(
+    interface: "meshtastic.serial_interface.SerialInterface", wait_duration: int = 15
+) -> tuple["meshtastic.serial_interface.SerialInterface", "meshtastic.Node"]:
     """Waits for a writeConfig + reboot cycle before proceeding.
 
     We haven't been able to figure out how to detect the end of the reboot reliably yet.
@@ -92,3 +94,9 @@ def wait_for_settings_to_apply(wait_duration: int = 15):
     with click.progressbar(range(wait_duration), label=message) as bar:
         for _ in bar:
             time.sleep(1)
+    # The connection doesn't seem to recover after the device applies settings
+    # and reboots. Reconnect using the same serial path and retrieve the update
+    # node info, which we'll return to replace the now-stale versions.
+    interface = meshtastic.serial_interface.SerialInterface(interface.devPath)
+    our_node: meshtastic.Node = interface.getNode("^local")
+    return interface, our_node

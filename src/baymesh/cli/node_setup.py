@@ -155,7 +155,7 @@ def apply_configs(
         long_name=configs.device_long_name, short_name=configs.device_short_name
     )
 
-    devices.wait_for_settings_to_apply()
+    interface, our_node = devices.wait_for_settings_to_apply(interface)
 
     click.secho("⚙️  Applying LoRa configs...")
     our_node.localConfig.lora.use_preset = True
@@ -164,7 +164,7 @@ def apply_configs(
     our_node.localConfig.lora.config_ok_to_mqtt = True
     our_node.writeConfig("lora")
 
-    devices.wait_for_settings_to_apply()
+    interface, our_node = devices.wait_for_settings_to_apply(interface)
 
     click.secho("⚙️  Applying role configs...")
     our_node.localConfig.device.role = configs.device_role
