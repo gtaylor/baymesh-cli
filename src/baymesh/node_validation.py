@@ -170,7 +170,9 @@ def _check_lora_hop_limit(hop_limit: int) -> Recommendation | None:
         )
 
 
-def _check_device_role(role: int) -> Recommendation | None:
+def _check_device_role(
+    role: "config_pb2.Config.DeviceConfig.Role.ValueType",
+) -> Recommendation | None:
     """Ensure that the user isn't using a node role that we discourage."""
     discouraged_roles = [
         config_pb2.Config.DeviceConfig.Role.ROUTER,
@@ -218,16 +220,17 @@ def _check_channels_mqtt_settings(
     """Ensure that the user has not set the dreaded downlink_enable to True."""
     if not channels:
         # Unclear on when this won't be set, but apparently it's not a given!
-        return
+        return None
     for channel in channels:
         if not channel.settings.downlink_enabled:
-            return
+            return None
         channel_index = channel.index
         channel_name = channel_pb2.Channel.Role.Name(channel.role)
         return Recommendation(
             message=f"Disable MQTT uplink on channel {channel_index}: {channel_name}.",
             severity=RecommendationSeverity.ERROR,
         )
+    return None
 
 
 def render_validation_report(report: "Report"):
@@ -238,7 +241,7 @@ def render_validation_report(report: "Report"):
         return
 
     for recommendation in report.recommendations:
-        echo_func = echo._recommendation_severity_to_echo(recommendation.severity)
+        echo_func = echo.recommendation_severity_to_echo(recommendation.severity)
         echo_func(f"{recommendation.severity.name}: {recommendation.message}")
 
     if report.validation_successful():

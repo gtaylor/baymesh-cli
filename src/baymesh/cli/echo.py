@@ -81,7 +81,7 @@ def set_logging_level(level: int, logger=None):
     logger.setLevel(level)
 
 
-def _recommendation_severity_to_echo(severity: "enum.Enum") -> "Callable":
+def recommendation_severity_to_echo(severity: "enum.Enum") -> "Callable":
     """Maps a recommendation severity to the corresponding echo func."""
     match severity:
         case node_validation.RecommendationSeverity.ERROR:
