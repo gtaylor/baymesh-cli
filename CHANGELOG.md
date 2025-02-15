@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.7.3 (2025-02-15)
+
+### Bug Fixes
+
+- Address upgraded pyright errors
+  ([`061721b`](https://github.com/gtaylor/baymesh-cli/commit/061721ba68210930e3c082209d951737d15c8da5))
+
+Pyright now requires explicit None returns.
+
+- Bring the reconnection logic back
+  ([`121d1a7`](https://github.com/gtaylor/baymesh-cli/commit/121d1a782ee8874044f7961a4b33da234f491b0b))
+
+The sleeps work fine, but the connection to the node does not recover automatically after the
+  settings restart. Go back to doing a reconnection after the sleep.
+
+### Chores
+
+- Bump dependencies
+  ([`ac8c39b`](https://github.com/gtaylor/baymesh-cli/commit/ac8c39bb66348bf3aaacbb35894f232de6bda75e))
+
+
 ## v0.7.2 (2025-01-12)
 
 ### Bug Fixes
